@@ -16,6 +16,8 @@ public class RandomPhotoViewModel extends AndroidViewModel {
 
     private MutableLiveData<Uri> photoUri = new MutableLiveData<>();
     private MutableLiveData<String> description = new MutableLiveData<>();
+    private MutableLiveData<String> data = new MutableLiveData<>();
+    private MutableLiveData<String> local = new MutableLiveData<>();
 
     private PhotoApplication app;
     private boolean loaded = false;
@@ -33,15 +35,25 @@ public class RandomPhotoViewModel extends AndroidViewModel {
         return description;
     }
 
+    public LiveData<String> getData() {
+        return data;
+    }
+
+    public LiveData<String> getLocal() {
+        return local;
+    }
+
     public void loadRandomPhoto() {
         if (!loaded) {
             app.executor.execute(() -> {
                 PhotoRecord photoRecord = app.getPhotoDatabase().photoDao().getRandomPhoto();
                 if (photoRecord == null) {
-                    Log.d("PHOTOJAR", "photoRecord is null");
+                    Log.d("PHOTOJAR", "Não possui Foto");
                     return;
                 }
                 photoUri.postValue(Uri.parse(photoRecord.getPhotoUri()));
+                data.postValue(photoRecord.getDate());
+                local.postValue(photoRecord.getLocal());
                 description.postValue(photoRecord.getDescription());
                 loaded = true;
             });

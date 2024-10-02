@@ -1,10 +1,14 @@
 package br.ifmg.edu.bsi.progmovel.photojar1;
-
+import br.ifmg.edu.bsi.progmovel.photojar1.model.PhotoDao;
+import br.ifmg.edu.bsi.progmovel.photojar1.model.PhotoRepository;
+import br.ifmg.edu.bsi.progmovel.photojar1.model.PhotoDatabase;
+import androidx.room.Room;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.room.migration.Migration;
 
 import android.Manifest;
 import android.app.Activity;
@@ -16,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Toast;
+import java.util.concurrent.Executors;
 
 import br.ifmg.edu.bsi.progmovel.photojar1.databinding.ActivityMainBinding;
 import br.ifmg.edu.bsi.progmovel.photojar1.model.PhotoRecord;
@@ -47,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        PhotoDatabase db = PhotoDatabase.getDatabase(getApplicationContext());
+        PhotoDao photoDao = db.photoDao();
+        PhotoRepository photoRepository = new PhotoRepository(photoDao);
+        Executors.newSingleThreadExecutor().execute(() -> photoRepository.logRandomPhoto());
         binding.capture.setOnClickListener((v) -> tryAndCaptureMoment());
         binding.cheerMeUp.setOnClickListener((v) -> {
             startActivity(new Intent(this, RandomPhotoActivity.class));

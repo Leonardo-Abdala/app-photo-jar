@@ -32,7 +32,7 @@ public class SavePhotoActivity extends AppCompatActivity {
             PhotoApplication app = (PhotoApplication) getApplication();
             app.executor.execute(() -> {
                 PhotoRecord photoRecord = new PhotoRecord(binding.editTextTextMultiLine.getText().toString(),
-                        new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()), uri.toString());
+                        new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()), uri.toString(), binding.editLocal.getText().toString());
                 app.getPhotoDatabase().photoDao().insert(photoRecord);
                 runOnUiThread(() -> Toast.makeText(app, "Image saved!", Toast.LENGTH_LONG).show());
                 finish();

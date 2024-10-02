@@ -19,6 +19,8 @@ public class RandomPhotoActivity extends AppCompatActivity {
 
         RandomPhotoViewModel vm = new ViewModelProvider(this).get(RandomPhotoViewModel.class);
         vm.getDescription().observe(this, (v) -> binding.textView2.setText(v));
+        vm.getData().observe(this, (v) -> binding.textData.setText(v));
+        vm.getLocal().observe(this, (v) -> binding.textLocalidade.setText(v));
         vm.getPhotoUri().observe(this, (v) -> binding.imageView3.setImageURI(v));
         vm.loadRandomPhoto();
 

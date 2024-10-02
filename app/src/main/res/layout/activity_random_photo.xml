@@ -10,16 +10,18 @@
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="?attr/colorPrimary"
+        android:background="#424040"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="385dp"
+        android:layout_height="435dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="24dp"
@@ -37,17 +39,16 @@
 
     <ScrollView
         android:id="@+id/textScrollView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintHeight_max="200dp"
-        app:layout_constrainedHeight="true"
-        android:layout_marginBottom="64dp"
-        android:background="#FFFFFF"
+        android:layout_width="383dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="4dp"
+        android:background="#FFC107"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:paddingBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constrainedHeight="true"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHeight_max="200dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
@@ -56,8 +57,13 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elegantTextHeight="true"
             android:text="Loading..."
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold" />
     </ScrollView>
 
     <ImageView
@@ -71,5 +77,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_close_24" />
+
+    <TextView
+        android:id="@+id/textData"
+        android:layout_width="168dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:text="Loading...."
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/textLocalidade"
+        android:layout_width="185dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="15dp"
+        android:text="Loading..."
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#050404"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

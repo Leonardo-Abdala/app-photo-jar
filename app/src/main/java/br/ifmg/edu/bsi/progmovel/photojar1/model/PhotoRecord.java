@@ -10,14 +10,14 @@ public class PhotoRecord {
     private String description;
     private String date;
     private String photoUri;
+    private String local;
 
-    public PhotoRecord() {
-    }
 
-    public PhotoRecord(String description, String date, String photoUri) {
+    public PhotoRecord(String description, String date, String photoUri, String local) {
         this.description = description;
         this.date = date;
         this.photoUri = photoUri;
+        this.local = local;
     }
 
     public int getId() {
@@ -51,4 +51,8 @@ public class PhotoRecord {
     public void setPhotoUri(String photoUri) {
         this.photoUri = photoUri;
     }
+
+    public String getLocal(){return local;}
+
+    public void setLocal(String local){this.local = local;}
 }
